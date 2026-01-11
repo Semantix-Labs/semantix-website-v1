@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowUpRight, Play, Camera, Monitor, X, Menu } from 'lucide-react';
+import { ArrowUpRight, Play, Camera, Monitor, X, Menu, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SemanixLogo from '@/components/SemanixLogo';
 import Footer from '@/components/Footer';
@@ -9,13 +9,31 @@ import Footer from '@/components/Footer';
 const PORTFOLIO_ITEMS = [
   // 1. Videos
   {
-    id: 10,
-    title: 'KBC Campaign',
+    id: 2,
+    title: 'Fashion Reel',
     category: 'Video Production',
-    image: '/videos/KBC.mp4',
+    image: '/videos/reel1.mp4',
     isVideo: true,
     type: 'video',
-    description: 'Dynamic commercial for KBC brand.'
+    description: 'High-energy fashion campaign for summer collection.'
+  },
+  {
+    id: 5,
+    title: 'Cinematic Showreel',
+    category: 'Video Production',
+    image: '/videos/reel2.mp4',
+    isVideo: true,
+    type: 'video',
+    description: 'Cinematic compilation of our best motion work.'
+  },
+  {
+    id: 15,
+    title: 'Urban Rhythm',
+    category: 'Video Production',
+    image: '/videos/reel4.mp4',
+    isVideo: true,
+    type: 'video',
+    description: 'The beat of the city.'
   },
   {
     id: 11,
@@ -44,24 +62,7 @@ const PORTFOLIO_ITEMS = [
     type: 'video',
     description: 'Teaser campaign for La Beirut.'
   },
-  {
-    id: 2,
-    title: 'Fashion Reel',
-    category: 'Video Production',
-    image: '/videos/reel1.mp4',
-    isVideo: true,
-    type: 'video',
-    description: 'High-energy fashion campaign for summer collection.'
-  },
-  {
-    id: 5,
-    title: 'Cinematic Showreel',
-    category: 'Video Production',
-    image: '/videos/reel2.mp4',
-    isVideo: true,
-    type: 'video',
-    description: 'Cinematic compilation of our best motion work.'
-  },
+
   {
     id: 14,
     title: 'Lifestyle Montage',
@@ -71,15 +72,7 @@ const PORTFOLIO_ITEMS = [
     type: 'video',
     description: 'Capturing life moments in motion.'
   },
-  {
-    id: 15,
-    title: 'Urban Rhythm',
-    category: 'Video Production',
-    image: '/videos/reel4.mp4',
-    isVideo: true,
-    type: 'video',
-    description: 'The beat of the city.'
-  },
+
   {
     id: 16,
     title: 'Motion Art',
@@ -109,36 +102,52 @@ const PORTFOLIO_ITEMS = [
   },
   // 2. Websites
   {
-    id: 1,
+    id: 20,
     title: 'River View Villas',
     category: 'Website',
     image: '/images/Riverview.png',
     type: 'website',
-    description: 'Luxury villa booking platform with immersive visual storytelling.'
+    description: 'Landing site for a an ayurveda villa with booking platform integrated'
   },
   {
-    id: 4,
+    id: 21,
     title: 'PGTC',
     category: 'Website',
     image: '/images/PGTC.png',
     type: 'website',
-    description: 'Corporate identity and digital presence for tech giant.'
+    description: 'A landing website for a golf and tour company at srilanka'
   },
   {
-    id: 6,
+    id: 22,
+    title: 'Tabroscapes Tours',
+    category: 'Website',
+    image: '/images/tabro.png',
+    type: 'website',
+    description: 'A portfolio website for a tour company at sri lanka'
+  },
+  {
+    id: 23,
     title: 'Mingle Box',
     category: 'Website',
     image: '/images/Mingle Box.png',
     type: 'website',
-    description: 'Food delivery platform with real-time tracking.'
+    description: 'An e-commerce platform for a gifting brand..'
   },
   {
-    id: 8,
-    title: 'Cuddles & Co',
+    id: 24,
+    title: 'Cuddles and Co',
     category: 'Website',
     image: '/images/Cuddles and co.png',
     type: 'website',
-    description: 'E-commerce site for premium pet products.'
+    description: 'An e-commerce platform for a baby products brand.'
+  },
+  {
+    id: 25,
+    title: 'Olinda Galle',
+    category: 'Website',
+    image: '/images/Olinda Galle.png',
+    type: 'website',
+    description: 'A portfolio website for a hotel at Galle.'
   },
   // 3. Photography
   {
@@ -164,6 +173,78 @@ const PORTFOLIO_ITEMS = [
     image: '/images/Bed-Setup-13.jpg',
     type: 'photography',
     description: 'Minimalist product photography for catalogue.'
+  },
+  {
+    id: 30,
+    title: 'Portrait Session',
+    category: 'Photography',
+    image: '/images/6W7A5474-2.jpg',
+    type: 'photography',
+    description: 'Professional portrait photography.'
+  },
+  {
+    id: 31,
+    title: 'Event Moments',
+    category: 'Photography',
+    image: '/images/6W7A5665.jpg',
+    type: 'photography',
+    description: 'Capturing key moments.'
+  },
+  {
+    id: 32,
+    title: 'Candid Shots',
+    category: 'Photography',
+    image: '/images/6W7A5976.jpg',
+    type: 'photography',
+    description: 'Natural and candid photography.'
+  },
+  {
+    id: 33,
+    title: 'Product Highlight',
+    category: 'Photography',
+    image: '/images/Blue-box.jpg',
+    type: 'photography',
+    description: 'Creative product focus.'
+  },
+  {
+    id: 34,
+    title: 'River View Exterior',
+    category: 'Photography',
+    image: '/images/RV1.jpg',
+    type: 'photography',
+    description: 'Architectural exterior photography.'
+  },
+  {
+    id: 35,
+    title: 'River View Interior',
+    category: 'Photography',
+    image: '/images/RV2.jpg',
+    type: 'photography',
+    description: 'Interior design photography.'
+  },
+  {
+    id: 36,
+    title: 'Lifestyle Session I',
+    category: 'Photography',
+    image: '/images/finall (14 of 21).jpg',
+    type: 'photography',
+    description: 'Modern lifestyle photography.'
+  },
+  {
+    id: 37,
+    title: 'Lifestyle Session II',
+    category: 'Photography',
+    image: '/images/finall (21 of 21).jpg',
+    type: 'photography',
+    description: 'Vibrant lifestyle captures.'
+  },
+  {
+    id: 38,
+    title: 'Lifestyle Session III',
+    category: 'Photography',
+    image: '/images/finall (4 of 21).jpg',
+    type: 'photography',
+    description: 'Urban lifestyle shots.'
   }
 ];
 
@@ -184,6 +265,7 @@ const FilterButton = ({ active, label, onClick }: { active: boolean; label: stri
 const OurWork = () => {
   const [filter, setFilter] = useState('video'); // Default to Video as it's first in order
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const filteredItems = filter === 'all'
     ? PORTFOLIO_ITEMS
@@ -252,11 +334,23 @@ const OurWork = () => {
           </p>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-4 pt-8">
-            <FilterButton active={filter === 'video'} label="Video" onClick={() => setFilter('video')} />
-            <FilterButton active={filter === 'website'} label="Websites" onClick={() => setFilter('website')} />
-            <FilterButton active={filter === 'photography'} label="Photography" onClick={() => setFilter('photography')} />
-            <FilterButton active={filter === 'all'} label="All Work" onClick={() => setFilter('all')} />
+          <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-end pt-8">
+            <div className="flex flex-wrap gap-4">
+              <FilterButton active={filter === 'video'} label="Video" onClick={() => setFilter('video')} />
+              <FilterButton active={filter === 'website'} label="Websites" onClick={() => setFilter('website')} />
+              <FilterButton active={filter === 'photography'} label="Photography" onClick={() => setFilter('photography')} />
+              <FilterButton active={filter === 'all'} label="All Work" onClick={() => setFilter('all')} />
+            </div>
+
+            <a
+              href="/documents/Semantix_Credentials.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition-colors font-medium text-sm"
+            >
+              <Download size={16} />
+              Download Semantix Credentials
+            </a>
           </div>
         </div>
 
@@ -269,6 +363,7 @@ const OurWork = () => {
                 "group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer",
                 item.isVideo ? "aspect-[9/16]" : "aspect-[4/3]"
               )}
+              onClick={() => item.type === 'photography' && setSelectedImage(item.image)}
             >
               {/* Media */}
               {item.isVideo ? (
@@ -289,8 +384,8 @@ const OurWork = () => {
                 />
               )}
 
-              {/* Overlay - Only for non-video items */}
-              {!item.isVideo && (
+              {/* Overlay - Only for non-video items AND not photography (clean look requested) */}
+              {!item.isVideo && item.type !== 'photography' && (
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <div className="flex justify-between items-start mb-2">
@@ -327,6 +422,27 @@ const OurWork = () => {
       </div>
 
       <Footer />
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors p-2"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={32} />
+          </button>
+          <img
+            src={selectedImage}
+            alt="Full screen view"
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };

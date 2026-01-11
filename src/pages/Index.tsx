@@ -269,7 +269,7 @@ const Index = () => {
       </section>
 
       {/* 5. Impact / Results */}
-      <section className="section bg-black">
+      <section className="py-24 md:py-32 section bg-black">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
           {[
             { value: '50+', label: 'Projects Delivered' },

@@ -2,28 +2,28 @@ import React, { useEffect, useRef } from 'react';
 
 // Import all logos
 const techLogos = import.meta.glob(
-  '/src/assets/Tech Stack Logos/*.{png,jpg,jpeg,svg}',
-  { eager: true, as: 'url' }
+    '/src/assets/Tech Stack Logos/*.{png,jpg,jpeg,svg}',
+    { eager: true, as: 'url' }
 );
 
 // Normalize filenames into usable keys
 const logoMap: Record<string, string> = {};
 
 Object.entries(techLogos).forEach(([path, url]) => {
-  const filename = path
-    .split('/')
-    .pop()!
-    .replace(/\.(png|jpg|jpeg|svg)/, '')
-    .replace('Semantix labs Tech product - ', '')
-    .toLowerCase()
-    .replace(/[_\s]+/g, ''); // remove spaces & underscores
+    const filename = path
+        .split('/')
+        .pop()!
+        .replace(/\.(png|jpg|jpeg|svg)/, '')
+        .replace('Semantix labs Tech product - ', '')
+        .toLowerCase()
+        .replace(/[_\s]+/g, ''); // remove spaces & underscores
 
-  logoMap[filename] = url as string;
+    logoMap[filename] = url as string;
 });
 
 // Safe getter
 const getLogo = (key: string) =>
-  logoMap[key.toLowerCase().replace(/[_\s]+/g, '')] ?? null;
+    logoMap[key.toLowerCase().replace(/[_\s]+/g, '')] ?? null;
 
 // Define the content list: mixtures of { type: 'image', src: ... } and { type: 'text', label: ... }
 const techItems = [
@@ -43,7 +43,7 @@ const techItems = [
     { type: 'image', src: getLogo('tiktoklogo'), alt: 'TikTok' },
 
 
-   
+
 ].filter(item => item.src || item.type === 'text'); // Filter out undefined images if any
 
 const TechSphere = () => {
@@ -63,42 +63,42 @@ const TechSphere = () => {
 
         // Create elements
         items.forEach((item, i) => {
-        const el = document.createElement('div');
-        el.className =
-            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ' +
-            'transition-transform duration-100 ease-linear will-change-transform ' +
-            'flex items-center justify-center';
+            const el = document.createElement('div');
+            el.className =
+                'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ' +
+                'transition-transform duration-100 ease-linear will-change-transform ' +
+                'flex items-center justify-center';
 
-        if (item.type === 'image' && item.src) {
-            // WHITE CIRCLE WRAPPER
-            const wrapper = document.createElement('div');
-            wrapper.className =
-                'w-20 h-20 rounded-full bg-white ' +
-                'flex items-center justify-center ' +
-                'shadow-[0_0_25px_rgba(168,85,247,0.35)]';
+            if (item.type === 'image' && item.src) {
+                // WHITE CIRCLE WRAPPER
+                const wrapper = document.createElement('div');
+                wrapper.className =
+                    'w-20 h-20 rounded-full bg-white ' +
+                    'flex items-center justify-center ' +
+                    'shadow-[0_0_25px_rgba(168,85,247,0.35)]';
 
-            // LOGO IMAGE
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.alt || '';
-            img.className = 'w-12 h-12 object-contain';
+                // LOGO IMAGE
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.alt = item.alt || '';
+                img.className = 'w-12 h-12 object-contain';
 
-            wrapper.appendChild(img);
-            el.appendChild(wrapper);
+                wrapper.appendChild(img);
+                el.appendChild(wrapper);
 
-        } else if (item.type === 'text' && item.label) {
-            el.textContent = item.label;
-            el.className +=
-                ' text-white font-bold text-xl md:text-2xl px-4 py-2 ' +
-                'rounded-full bg-black/40 backdrop-blur-md border border-white/10 ' +
-                'shadow-[0_0_10px_rgba(255,255,255,0.1)] ' +
-                'hover:bg-white/10 hover:scale-110 transition-all ' +
-                'cursor-default whitespace-nowrap';
-        }
+            } else if (item.type === 'text' && item.label) {
+                el.textContent = item.label;
+                el.className +=
+                    ' text-white font-bold text-xl md:text-2xl px-4 py-2 ' +
+                    'rounded-full bg-black/40 backdrop-blur-md border border-white/10 ' +
+                    'shadow-[0_0_10px_rgba(255,255,255,0.1)] ' +
+                    'hover:bg-white/10 hover:scale-110 transition-all ' +
+                    'cursor-default whitespace-nowrap';
+            }
 
-        container.appendChild(el);
-        tagElements.push(el);
-    });
+            container.appendChild(el);
+            tagElements.push(el);
+        });
 
         // Animation Loop
         let angleX = 0;
