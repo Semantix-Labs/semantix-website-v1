@@ -130,7 +130,7 @@ const Index = () => {
 
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 animate-slide-up opacity-0" style={{ animationDelay: '0.6s' }}>
             We design and engineer scalable digital products with a focus on performance, reliability, and long term growth.
-            </p>
+          </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-slide-up opacity-0" style={{ animationDelay: '0.8s' }}>
             <Button size="lg" className="h-14 px-8 rounded-full bg-white text-black hover:bg-gray-200 text-lg font-medium transition-transform hover:scale-105" onClick={openCalendly}>
@@ -248,22 +248,28 @@ const Index = () => {
         </div>
 
         <div className="relative">
-          {/* Connecting Line */}
+          {/* Desktop Connecting Line */}
           <div className="hidden md:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+          {/* Mobile Connecting Line */}
+          <div className="md:hidden absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 relative z-10">
             {[
               { step: '01', title: 'Discovery', desc: 'We dive deep into your business goals and audience.' },
               { step: '02', title: 'Strategy', desc: 'We craft a roadmap for design and technology.' },
               { step: '03', title: 'Build', desc: 'Agile development with regular updates and feedback.' },
               { step: '04', title: 'Launch', desc: 'Rigorous testing and a smooth go-live experience.' }
             ].map((item, idx) => (
-              <div key={idx} className="group relative">
-                <div className="w-24 h-24 bg-black border border-white/10 rounded-full flex items-center justify-center text-2xl font-bold text-white mb-6 mx-auto group-hover:border-purple-500/50 group-hover:scale-110 transition-all duration-300 shadow-xl shadow-black">
+              <div key={idx} className="group relative flex md:flex-col items-center md:items-stretch gap-6 md:gap-0">
+                <div className="shrink-0 w-16 h-16 md:w-24 md:h-24 bg-black border border-white/10 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold text-white md:mb-6 md:mx-auto group-hover:border-purple-500/50 group-hover:scale-110 transition-all duration-300 shadow-xl shadow-black z-10 relative">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 text-center">{item.title}</h3>
-                <p className="text-gray-400 text-center text-sm leading-relaxed">{item.desc}</p>
+
+                <div className="text-left md:text-center">
+                  <h3 className="text-xl font-bold text-white mb-1 md:mb-3">{item.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
