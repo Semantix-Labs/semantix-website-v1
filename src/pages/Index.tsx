@@ -294,13 +294,21 @@ const Index = () => {
       </section>
 
       {/* 6. Brand Philosophy */}
-      <section className="py-32 md:py-48 bg-black flex items-center justify-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px] animate-pulse-slow" />
-        <div className="max-w-4xl px-6 text-center relative z-10">
-          <blockquote className="text-3xl md:text-5xl font-medium text-white leading-tight mb-8">
-            "People do not buy goods and services. They buy relations, stories, and magic."
+      <section className="py-24 md:py-32 bg-black flex items-center justify-center relative overflow-hidden group">
+        {/* Background Grids & Glows */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px] animate-pulse-slow" />
+
+        {/* Large Decorative Quote */}
+        <div className="absolute top-12 left-4 md:left-1/4 text-[12rem] md:text-[16rem] leading-none font-serif text-white/5 select-none pointer-events-none -translate-y-1/2 translate-x-1/2 font-bold">
+          &rdquo;
+        </div>
+
+        <div className="max-w-5xl px-6 text-center relative z-10">
+          <blockquote className="text-3xl md:text-5xl md:leading-tight font-medium text-white mb-8">
+            "People do not buy goods and services. They buy <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 animate-gradient-x bg-[length:200%_auto]">relations, stories, and magic</span>."
           </blockquote>
-          <cite className="text-xl text-gray-400 not-italic block">- Seth Godin</cite>
+          <cite className="text-lg md:text-xl text-gray-500 not-italic font-medium tracking-wide uppercase">- Seth Godin</cite>
         </div>
       </section>
 
