@@ -34,6 +34,17 @@ export const ContactForm = () => {
     if (!formRef.current) return;
     setIsSubmitting(true);
 
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS environment variables are missing.');
+      toast({
+        title: "Configuration Error",
+        description: "Email service is not configured properly. Please check your environment variables.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       console.log('Attempting to send email with EmailJS...');
 

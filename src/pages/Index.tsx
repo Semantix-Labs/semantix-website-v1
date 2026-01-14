@@ -72,6 +72,7 @@ const Index = () => {
             <a href="#solutions" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Solutions</a>
             <a href="#how-we-work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Process</a>
             <a href="/our-work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Featured Work</a>
+            <a href="#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Contact</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -98,6 +99,7 @@ const Index = () => {
             <a href="#solutions" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Solutions</a>
             <a href="#how-we-work" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Process</a>
             <a href="/our-work" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Our Work</a>
+            <a href="#contact" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
             <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-6 text-lg" onClick={() => { openCalendly(); setIsMobileMenuOpen(false); }}>
               Start Project
             </Button>

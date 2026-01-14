@@ -291,6 +291,7 @@ const OurWork = () => {
           <div className="hidden md:flex items-center gap-10">
             <a href="/" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Home</a>
             <a href="/our-work" className="text-sm font-medium text-white transition-colors">Our Work</a>
+            <a href="/#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Contact</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -315,6 +316,7 @@ const OurWork = () => {
           <div className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in p-6">
             <a href="/" className="text-3xl font-medium text-white">Home</a>
             <a href="/our-work" className="text-3xl font-medium text-white">Our Work</a>
+            <a href="/#contact" className="text-3xl font-medium text-white">Contact</a>
             <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-6 text-lg" onClick={openCalendly}>
               Start Project
             </Button>
