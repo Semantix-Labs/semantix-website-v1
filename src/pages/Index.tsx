@@ -24,6 +24,8 @@ import FeatureCard from '@/components/FeatureCard';
 import TechSphere from '@/components/TechSphere';
 import ClientsCarousel from '@/components/ClientsCarousel';
 
+import { SEO } from '@/components/SEO';
+
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -54,8 +56,34 @@ const Index = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Semantix Labs",
+    "url": "https://semantixlabs.com",
+    "logo": "https://semantixlabs.com/logo.png",
+    "description": "Premium Digital Agency specializing in Web Development, Mobile Apps, and Digital Growth for Europe and USA markets.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "LK"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/semantix-labs",
+      "https://www.instagram.com/semantixlabs"
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-purple-500/30">
+      <SEO
+        title="Digital Agency for Web Development & Growth"
+        description="Semantix Labs is a premium digital agency delivering high-performance websites, mobile apps, and digital growth strategies for businesses in the USA and Europe."
+        keywords="Web Development, Mobile Apps, Digital Marketing, SEO Agency, USA, Europe, Semantix Labs"
+        canonicalUrl="https://semantixlabs.com/"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
 
       {/* Floating Header */}
       <nav className={cn(

@@ -4,6 +4,7 @@ import { ArrowUpRight, Play, Camera, Monitor, X, Menu, Download } from 'lucide-r
 import { cn } from '@/lib/utils';
 import SemanixLogo from '@/components/SemanixLogo';
 import Footer from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 
 // Data Mock - Preserving existing paths where possible
 const PORTFOLIO_ITEMS = [
@@ -262,6 +263,7 @@ const FilterButton = ({ active, label, onClick }: { active: boolean; label: stri
   </button>
 );
 
+
 const OurWork = () => {
   const [filter, setFilter] = useState('video'); // Default to Video as it's first in order
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -281,6 +283,12 @@ const OurWork = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-purple-500/30">
+      <SEO
+        title="Our Work | Semantix Labs Portfolio"
+        description="Explore our portfolio of high-impact websites, cinematic video productions, and branding projects. See how Semantix Labs drives digital growth."
+        keywords="Portfolio, Case Studies, Web Design, Video Production, Branding, Semantix Labs Work"
+        canonicalUrl="https://semantixlabs.com/our-work"
+      />
       <nav className="fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300">
         <div className="w-full max-w-[1200px] bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl shadow-purple-500/5 flex items-center justify-between">
           <a href="/" className="z-50 shrink-0">
