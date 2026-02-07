@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
                         <h4 className="font-semibold text-lg mb-6">Contact</h4>
                         <ul className="space-y-4">
                             <li className="text-gray-400">hello@semantixlabs.com</li>
-                            <li className="text-gray-400">+94 72 813 3311</li>
+                            <li className="text-gray-400">+94 77 688 2493</li>
                             <li className="text-gray-400">Colombo, Sri Lanka</li>
                         </ul>
                     </div>
