@@ -106,6 +106,35 @@ const JOB_OPENINGS = [
       "A flexible, fully remote work setup",
       "A stepping stone to a full-time career in digital marketing"
     ]
+  },
+  {
+    id: 3,
+    title: 'Graphic Designer',
+    department: 'Design',
+    location: 'Remote',
+    type: 'Contract / Project Basis',
+    description: "Partner with us on a flexible, project-by-project basis to create stunning visual assets for the diverse clients we manage.",
+    aboutRole: "We are looking for a highly creative and detail-oriented Graphic Designer to partner with Semantix Labs on a flexible, project-by-project basis. In this role, you will work closely with our core team to deliver premium, eye-catching visual assets for the diverse range of clients we manage. This is a perfect opportunity for a talented freelancer looking for consistent project flow.",
+    responsibilities: [
+      "Designing high-quality visual assets for social media, digital campaigns, and brand identities.",
+      "Collaborating with our marketing team to translate client briefs into compelling visuals.",
+      "Delivering projects on agreed-upon deadlines with a high standard of aesthetics.",
+      "Ensuring all graphics align seamlessly with the specific brand guidelines of our clients.",
+      "Iterating on designs based on constructive feedback from our team and clients."
+    ],
+    requirements: [
+      "Proven experience as a Graphic Designer with a strong, modern portfolio.",
+      "Proficiency in industry-standard design tools (Adobe Creative Suite, Figma, etc.).",
+      "Ability to adapt to various brand voices and visual styles quickly.",
+      "Strong communication skills and absolute reliability as an independent contractor.",
+      "Capacity to manage multiple project timelines efficiently."
+    ],
+    benefits: [
+      "Flexible, remote work on a project-by-project basis.",
+      "Opportunity to work with exciting and diverse global clients.",
+      "Clear, communicative briefs and a highly collaborative agency team.",
+      "Competitive, reliable project-based compensation."
+    ]
   }
 ];
 
