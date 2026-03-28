@@ -10,6 +10,7 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import OurWork from "./pages/OurWork";
+import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/our-work" element={<OurWork />} />
+            <Route path="/careers" element={<Careers />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
