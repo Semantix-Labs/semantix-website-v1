@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import GoogleAnalytics from './components/GoogleAnalytics';
+import WhatsAppButton from './components/WhatsAppButton';
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import OurWork from "./pages/OurWork";
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <WhatsAppButton />
         <Analytics />
         <SpeedInsights />
       </TooltipProvider>
