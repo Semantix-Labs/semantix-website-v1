@@ -281,14 +281,58 @@ const OurWork = () => {
     }
   };
 
+  const ourWorkSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Our Work | Semantix Labs Portfolio",
+      "url": "https://semantixlabs.com/our-work",
+      "description": "Explore Semantix Labs' portfolio of high-performance websites, cinematic video productions, brand identities, and photography projects delivered for clients globally.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://semantixlabs.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Our Work", "item": "https://semantixlabs.com/our-work" }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Semantix Labs Portfolio Projects",
+      "description": "Selected portfolio projects by Semantix Labs — websites, video production, and photography.",
+      "numberOfItems": PORTFOLIO_ITEMS.length,
+      "itemListElement": PORTFOLIO_ITEMS.filter(item => item.type === 'website').map((item, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": item.title,
+        "description": item.description,
+        "item": {
+          "@type": "CreativeWork",
+          "name": item.title,
+          "description": item.description,
+          "creator": {
+            "@type": "Organization",
+            "name": "Semantix Labs"
+          }
+        }
+      }))
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-purple-500/30">
       <SEO
-        title="Our Work | Semantix Labs Portfolio"
-        description="Explore our portfolio of high-impact websites, cinematic video productions, and branding projects. See how Semantix Labs drives digital growth."
-        keywords="Portfolio, Case Studies, Web Design, Video Production, Branding, Semantix Labs Work"
+        title="Our Work — Portfolio of Websites, Videos & Brand Design"
+        description="Explore Semantix Labs' portfolio of high-performance websites, cinematic video productions, brand identities, and photography projects for clients in Sri Lanka, USA, Europe, and beyond."
+        keywords="Semantix Labs portfolio, web design portfolio, video production agency, brand design, digital agency work, website showcase, e-commerce design"
         canonicalUrl="https://semantixlabs.com/our-work"
       />
+      {ourWorkSchemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
       <nav className="fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300">
         <div className="w-full max-w-[1200px] bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl shadow-purple-500/5 flex items-center justify-between">
           <a href="/" className="z-50 shrink-0">

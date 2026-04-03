@@ -200,14 +200,63 @@ const Careers = () => {
     }
   };
 
+  const jobPostingSchemas = JOB_OPENINGS.map((job) => ({
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": job.title,
+    "description": [job.aboutRole, "Responsibilities: " + job.responsibilities.join(". "), "Requirements: " + job.requirements.join(". ")].join(" "),
+    "datePosted": "2025-03-01",
+    "validThrough": "2025-12-31",
+    "employmentType": job.type === "Full-time" ? "FULL_TIME" : job.type === "Internship" ? "INTERN" : "CONTRACTOR",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Semantix Labs",
+      "sameAs": "https://semantixlabs.com",
+      "logo": "https://semantixlabs.com/logo_favicon.png"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "LK"
+      }
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "Worldwide"
+    }
+  }));
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-purple-500/30 font-sans">
       <SEO
-        title="Careers | Semantix Labs"
-        description="Join Semantix Labs and help us build the future of digital experiences. Explore our open roles and find out why you should work with us."
-        keywords="Careers, Jobs, Semantix Labs, Hiring, Remote Work, Engineering, Design"
+        title="Careers at Semantix Labs | Remote Digital Agency Jobs"
+        description="Join Semantix Labs — a remote-first digital agency. We're hiring for Digital Marketing, Design, and more. Work from anywhere, build with great people."
+        keywords="Semantix Labs careers, remote jobs digital agency, digital marketing jobs, graphic designer remote, marketing internship, web agency jobs"
         canonicalUrl="https://semantixlabs.com/careers"
       />
+      {jobPostingSchemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Careers at Semantix Labs",
+          "url": "https://semantixlabs.com/careers",
+          "description": "Explore open roles at Semantix Labs, a remote-first premium digital agency. Join our team of designers, marketers, and builders.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://semantixlabs.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Careers", "item": "https://semantixlabs.com/careers" }
+            ]
+          }
+        })}
+      </script>
       
       {/* Navigation */}
       <nav className="fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300">

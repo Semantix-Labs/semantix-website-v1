@@ -56,34 +56,112 @@ const Index = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Semantix Labs",
-    "url": "https://semantixlabs.com",
-    "logo": "https://semantixlabs.com/logo.png",
-    "description": "Premium Digital Agency specializing in Web Development, Mobile Apps, and Digital Growth for Europe and USA markets.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "LK"
+  const faqData = [
+    {
+      q: "What is Semantix Labs?",
+      a: "Semantix Labs is a premium digital agency that designs and engineers high-performance websites, mobile apps, brand identities, AI automations, and digital marketing strategies for businesses in the USA, Europe, and globally. Founded in 2019, we have delivered 50+ projects with 100% client satisfaction."
     },
-    "sameAs": [
-      "https://www.linkedin.com/company/semantix-labs",
-      "https://www.instagram.com/semantixlabs"
-    ]
-  };
+    {
+      q: "What services does Semantix Labs offer?",
+      a: "Semantix Labs offers: Web Development (custom websites and web apps), Mobile App Development (iOS & Android), UI/UX Design, Brand Identity & Logo Design, AI Automation & Chatbots, Digital Marketing & SEO, E-commerce Development, Video Production, and Photography."
+    },
+    {
+      q: "Where is Semantix Labs based and do you work with international clients?",
+      a: "Semantix Labs is headquartered in Sri Lanka and works with clients across the USA, United Kingdom, Europe, Australia, and the Middle East. We are a fully remote-capable agency built for global collaboration."
+    },
+    {
+      q: "How long does a typical web development project take?",
+      a: "Most website projects at Semantix Labs take between 2 to 6 weeks depending on complexity. Simple landing pages can be delivered in 2 weeks, while custom web applications and e-commerce platforms typically take 4 to 8 weeks. We follow an agile process with regular client updates."
+    },
+    {
+      q: "How do I start a project with Semantix Labs?",
+      a: "You can start by booking a free 30-minute consultation call via our website or reaching out on WhatsApp at +94 77 688 2493. We'll discuss your goals, timeline, and budget, then provide a tailored proposal with no obligation."
+    },
+    {
+      q: "What technologies does Semantix Labs use?",
+      a: "We build with modern, scalable technologies including React, Next.js, Node.js, TypeScript, Python, Flutter, React Native, Webflow, Shopify, and more. Our cloud infrastructure leverages AWS, Vercel, and Firebase to ensure 99.9% uptime."
+    },
+    {
+      q: "Does Semantix Labs offer ongoing support after launch?",
+      a: "Yes. Semantix Labs offers 24/7 support and maintenance packages for all digital products we build. This includes bug fixes, performance monitoring, content updates, and platform upgrades to ensure your product stays competitive."
+    },
+    {
+      q: "How much does a website cost at Semantix Labs?",
+      a: "Website pricing at Semantix Labs varies based on scope and complexity. Landing pages start from $800, business websites from $2,000, and custom web applications from $5,000. Book a free consultation to get a tailored quote for your project."
+    }
+  ];
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Semantix Labs | Digital Agency for Web Development & Growth",
+      "url": "https://semantixlabs.com/",
+      "description": "Semantix Labs is a premium digital agency delivering high-performance websites, mobile apps, AI automations, and digital growth strategies for businesses worldwide.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Semantix Labs",
+        "url": "https://semantixlabs.com"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "Semantix Labs"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://semantixlabs.com/"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": a
+        }
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Semantix Labs Services",
+      "description": "Full list of digital agency services offered by Semantix Labs",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Web Development", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 2, "name": "Mobile App Development", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 3, "name": "UI/UX Design", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 4, "name": "Brand Identity", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 5, "name": "AI Automation", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 6, "name": "Digital Marketing & SEO", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 7, "name": "E-commerce Development", "url": "https://semantixlabs.com/#solutions" },
+        { "@type": "ListItem", "position": 8, "name": "Video Production & Photography", "url": "https://semantixlabs.com/our-work" }
+      ]
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-purple-500/30">
       <SEO
-        title="Digital Agency for Web Development & Growth"
-        description="Semantix Labs is a premium digital agency delivering high-performance websites, mobile apps, and digital growth strategies for businesses in the USA and Europe."
-        keywords="Web Development, Mobile Apps, Digital Marketing, SEO Agency, USA, Europe, Semantix Labs"
+        title="Digital Agency for Web Development, Mobile Apps & AI Automation"
+        description="Semantix Labs is a premium digital agency delivering high-performance websites, mobile apps, AI automations, and digital growth strategies for businesses in the USA, Europe, and globally. 50+ projects. 100% client satisfaction."
+        keywords="web development agency, mobile app development, UI UX design, brand identity, AI automation, digital marketing, SEO agency, e-commerce development, Semantix Labs, digital agency USA, digital agency Europe"
         canonicalUrl="https://semantixlabs.com/"
       />
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      {structuredData.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
 
       {/* Floating Header */}
       <nav className={cn(
@@ -337,6 +415,29 @@ const Index = () => {
             "People do not buy goods and services. They buy <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 animate-gradient-x bg-[length:200%_auto]">relations, stories, and magic</span>."
           </blockquote>
           <cite className="text-lg md:text-xl text-gray-500 not-italic font-medium tracking-wide uppercase">- Seth Godin</cite>
+        </div>
+      </section>
+
+      {/* FAQ Section — GEO optimised */}
+      <section id="faq" className="py-24 md:py-32 bg-black relative">
+        <div className="max-w-[900px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-400">Everything you need to know about working with Semantix Labs.</p>
+          </div>
+          <div className="space-y-4">
+            {faqData.map(({ q, a }, idx) => (
+              <details key={idx} className="group border border-white/10 rounded-2xl bg-white/[0.02] overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-white font-semibold text-base md:text-lg list-none select-none hover:bg-white/[0.04] transition-colors">
+                  {q}
+                  <span className="ml-4 shrink-0 text-purple-400 text-xl font-light group-open:rotate-45 transition-transform duration-200">+</span>
+                </summary>
+                <div className="px-6 pb-6 pt-2 text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5">
+                  {a}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
