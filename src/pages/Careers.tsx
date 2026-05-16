@@ -53,6 +53,34 @@ const PERKS = [
 
 const JOB_OPENINGS = [
   {
+    id: 4,
+    title: 'Junior Video Editor',
+    department: 'Creative',
+    location: 'Remote',
+    type: 'Full-time',
+    description: "Turn raw footage into scroll-stopping content that brings our clients' brands to life across social media platforms.",
+    aboutRole: "We're looking for a creative and driven Junior Video Editor to join the Semantix Labs team. In this role, you'll be behind the lens and the timeline capturing raw moments and turning them into scroll-stopping content that brings our clients' brands to life across social media.",
+    responsibilities: [
+      "Shooting content using a camera or smartphone across a range of client projects, from F&B to lifestyle and beyond",
+      "Editing short-form video for social media platforms (Instagram Reels, TikTok, YouTube Shorts, Facebook)",
+      "Using editing tools such as Adobe Premiere Pro, CapCut, or similar to deliver polished, on-brand cuts",
+      "Leveraging AI-powered elements in your workflow (auto-captioning, generative fill, AI b-roll, smart cuts) to work faster and push creative boundaries",
+      "Collaborating with the creative and brand teams to align video output with each client's tone and visual identity",
+      "Staying on top of trends, sounds, and formats to keep our content fresh and relevant",
+      "Managing project files, footage libraries, and post-production timelines"
+    ],
+    requirements: [
+      "A strong portfolio showcasing previous video work (required)",
+      "Hands-on experience shooting and editing content for social media",
+      "Proficiency in editing tools such as Premiere Pro, CapCut, DaVinci Resolve, or similar",
+      "Comfort working with AI-powered editing features and a curiosity to keep learning new tools",
+      "A solid eye for composition, pacing, sound design, and storytelling",
+      "Experience producing F&B (food & beverage) videos is a strong added advantage",
+      "Bonus points for motion graphics, color grading, or After Effects skills",
+      "A self-starter mindset with the ability to take direction and run with creative ideas"
+    ]
+  },
+  {
     id: 1,
     title: 'Digital Marketing Manager (Brand & Growth)',
     department: 'Marketing',
@@ -110,7 +138,7 @@ const JOB_OPENINGS = [
   {
     id: 3,
     title: 'Graphic Designer',
-    department: 'Design',
+    department: 'Creative',
     location: 'Remote',
     type: 'Contract / Project Basis',
     description: "Partner with us on a flexible, project-by-project basis to create stunning visual assets for the diverse clients we manage.",
@@ -138,10 +166,13 @@ const JOB_OPENINGS = [
   }
 ];
 
+const FILTERS = ['All', 'Creative', 'Marketing', 'Development'];
+
 const Careers = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('All');
   
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -378,10 +409,27 @@ const Careers = () => {
             <p className="text-xl text-gray-400 max-w-2xl mx-auto text-center">
               Find your next role and join our global mission.
             </p>
+
+            <div className="flex flex-wrap justify-center gap-3 mt-10">
+              {FILTERS.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={cn(
+                    "px-5 py-2 rounded-full text-sm font-semibold tracking-wide border transition-all duration-200",
+                    activeFilter === filter
+                      ? "bg-purple-500/20 text-purple-300 border-purple-500/40"
+                      : "bg-white/[0.03] text-gray-400 border-white/10 hover:bg-white/[0.07] hover:text-white hover:border-white/20"
+                  )}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-6">
-            {JOB_OPENINGS.map((job) => (
+            {JOB_OPENINGS.filter((job) => activeFilter === 'All' || job.department === activeFilter).map((job) => (
               <div 
                 key={job.id} 
                 className="group relative bg-white/[0.02] border border-white/5 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300 shadow-lg"
@@ -422,9 +470,9 @@ const Careers = () => {
             ))}
           </div>
 
-          {JOB_OPENINGS.length === 0 && (
+          {JOB_OPENINGS.filter((job) => activeFilter === 'All' || job.department === activeFilter).length === 0 && (
             <div className="py-20 text-center border border-dashed border-white/20 rounded-3xl bg-white/5">
-              <p className="text-gray-500 text-lg">No open positions at the moment, but feel free to send us your resume!</p>
+              <p className="text-gray-500 text-lg">No open positions in {activeFilter} at the moment.</p>
             </div>
           )}
         </div>
