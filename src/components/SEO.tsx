@@ -15,7 +15,7 @@ export const SEO = ({
     description,
     keywords,
     canonicalUrl,
-    ogImage = 'https://semantixlabs.com/og-image.png',
+    ogImage = 'https://semantixlabs.com/logo_favicon.png',
     type = 'website',
     noIndex = false,
 }: SEOProps) => {

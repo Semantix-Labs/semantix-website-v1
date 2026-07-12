@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,9 +10,13 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import WhatsAppButton from './components/WhatsAppButton';
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import OurWork from "./pages/OurWork";
-import Careers from "./pages/Careers";
+
+const NotFound = lazy(() => import("./pages/NotFound"));
+const OurWork = lazy(() => import("./pages/OurWork"));
+const Careers = lazy(() => import("./pages/Careers"));
+const Services = lazy(() => import("./pages/Services"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const Pricing = lazy(() => import("./pages/Pricing"));
 
 const queryClient = new QueryClient();
 
@@ -23,13 +28,18 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <GoogleAnalytics />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/our-work" element={<OurWork />} />
-            <Route path="/careers" element={<Careers />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/our-work" element={<OurWork />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
+              <Route path="/pricing" element={<Pricing />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
         <WhatsAppButton />
         <Analytics />

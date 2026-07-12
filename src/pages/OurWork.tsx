@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowUpRight, Play, Camera, Monitor, X, Menu, Download } from 'lucide-react';
+import { ArrowUpRight, Play, Camera, Monitor, X, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import SemanixLogo from '@/components/SemanixLogo';
+import SiteHeader from '@/components/SiteHeader';
 import Footer from '@/components/Footer';
 import { SEO } from '@/components/SEO';
 
@@ -266,20 +265,11 @@ const FilterButton = ({ active, label, onClick }: { active: boolean; label: stri
 
 const OurWork = () => {
   const [filter, setFilter] = useState('video'); // Default to Video as it's first in order
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const filteredItems = filter === 'all'
     ? PORTFOLIO_ITEMS
     : PORTFOLIO_ITEMS.filter(item => item.type === filter);
-
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/semantixlabs/30min' });
-    } else {
-      window.open('https://calendly.com/semantixlabs/30min', '_blank');
-    }
-  };
 
   const ourWorkSchemas = [
     {
@@ -333,48 +323,7 @@ const OurWork = () => {
           {JSON.stringify(schema)}
         </script>
       ))}
-      <nav className="fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300">
-        <div className="w-full max-w-[1200px] bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl shadow-purple-500/5 flex items-center justify-between">
-          <a href="/" className="z-50 shrink-0">
-            <SemanixLogo className="h-10 md:h-12 w-auto transition-transform hover:scale-105" theme="light" />
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
-            <a href="/" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Home</a>
-            <a href="/our-work" className="text-sm font-medium text-white transition-colors">Our Work</a>
-            <a href="/#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Contact</a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden md:block">
-              <Button size="sm" className="bg-white text-black hover:bg-gray-200 rounded-full px-6 font-medium" onClick={openCalendly}>
-                Start Project
-              </Button>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden z-50 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in p-6">
-            <a href="/" className="text-3xl font-medium text-white">Home</a>
-            <a href="/our-work" className="text-3xl font-medium text-white">Our Work</a>
-            <a href="/#contact" className="text-3xl font-medium text-white">Contact</a>
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-6 text-lg" onClick={openCalendly}>
-              Start Project
-            </Button>
-          </div>
-        )}
-      </nav>
+      <SiteHeader activePath="/our-work" />
 
       <div className="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
         {/* Header */}

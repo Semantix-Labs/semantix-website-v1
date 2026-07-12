@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import {
   ArrowRight,
-  Menu,
-  X,
   ArrowUpRight,
   CheckCircle2,
   Monitor,
@@ -16,46 +13,18 @@ import {
   Fingerprint,
   LayoutGrid
 } from 'lucide-react';
-import SemanixLogo from '@/components/SemanixLogo';
+import SiteHeader from '@/components/SiteHeader';
 import { ContactForm } from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import SolutionBlock from '@/components/SolutionBlock';
 import FeatureCard from '@/components/FeatureCard';
 import TechSphere from '@/components/TechSphere';
 import ClientsCarousel from '@/components/ClientsCarousel';
+import { openCalendly } from '@/lib/calendly';
 
 import { SEO } from '@/components/SEO';
 
 const Index = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/semantixlabs/30min' });
-    } else {
-      window.open('https://calendly.com/semantixlabs/30min', '_blank');
-    }
-  };
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      // Offset for fixed header
-      const y = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   const faqData = [
     {
       q: "What is Semantix Labs?",
@@ -137,14 +106,14 @@ const Index = () => {
       "name": "Semantix Labs Services",
       "description": "Full list of digital agency services offered by Semantix Labs",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Web Development", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 2, "name": "Mobile App Development", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 3, "name": "UI/UX Design", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 4, "name": "Brand Identity", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 5, "name": "AI Automation", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 6, "name": "Digital Marketing & SEO", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 7, "name": "E-commerce Development", "url": "https://semantixlabs.com/#solutions" },
-        { "@type": "ListItem", "position": 8, "name": "Video Production & Photography", "url": "https://semantixlabs.com/our-work" }
+        { "@type": "ListItem", "position": 1, "name": "Web Development", "url": "https://semantixlabs.com/services/web-development" },
+        { "@type": "ListItem", "position": 2, "name": "Mobile App Development", "url": "https://semantixlabs.com/services/mobile-app-development" },
+        { "@type": "ListItem", "position": 3, "name": "UI/UX Design", "url": "https://semantixlabs.com/services/ui-ux-design" },
+        { "@type": "ListItem", "position": 4, "name": "Brand Identity", "url": "https://semantixlabs.com/services/branding" },
+        { "@type": "ListItem", "position": 5, "name": "AI Automation", "url": "https://semantixlabs.com/services/ai-automation" },
+        { "@type": "ListItem", "position": 6, "name": "Digital Marketing & SEO", "url": "https://semantixlabs.com/services/seo-digital-marketing" },
+        { "@type": "ListItem", "position": 7, "name": "E-commerce Development", "url": "https://semantixlabs.com/services/ecommerce" },
+        { "@type": "ListItem", "position": 8, "name": "Video Production & Photography", "url": "https://semantixlabs.com/services/video-production" }
       ]
     }
   ];
@@ -163,58 +132,10 @@ const Index = () => {
         </script>
       ))}
 
-      {/* Floating Header */}
-      <nav className={cn(
-        "fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300",
-        scrolled ? "top-4" : "top-4 md:top-8"
-      )}>
-        <div className="w-full max-w-[1200px] bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl shadow-purple-500/5 flex items-center justify-between transition-all duration-300">
-          <a href="/" className="z-50 shrink-0">
-            <SemanixLogo className="h-12 md:h-14 w-auto transition-transform hover:scale-105" theme="light" />
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
-            <a href="#solutions" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Solutions</a>
-            <a href="#how-we-work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Process</a>
-            <a href="/our-work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Featured Work</a>
-            <a href="#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Contact</a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {/* Desktop Button */}
-            <div className="hidden md:block">
-              <Button size="sm" className="bg-white text-black hover:bg-gray-200 rounded-full px-6 font-medium" onClick={openCalendly}>
-                Start Project
-              </Button>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden z-50 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in p-6">
-            <a href="#solutions" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Solutions</a>
-            <a href="#how-we-work" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Process</a>
-            <a href="/our-work" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Our Work</a>
-            <a href="#contact" className="text-3xl font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-6 text-lg" onClick={() => { openCalendly(); setIsMobileMenuOpen(false); }}>
-              Start Project
-            </Button>
-          </div>
-        )}
-      </nav>
+      <SiteHeader activePath="/" />
 
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20">
+      <section id="about" className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background Animation */}
         <div className="absolute inset-0 w-full h-full bg-black">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] animate-pulse" />
@@ -276,31 +197,37 @@ const Index = () => {
             icon={Monitor}
             title="Web & Software"
             description="High-performance websites and custom software tailored to your business logic."
+            href="/services/web-development"
           />
           <SolutionBlock
             icon={Palette}
             title="Brand Identity"
             description="Memorable logos and brand guidelines that set you apart from the competition."
+            href="/services/branding"
           />
           <SolutionBlock
             icon={Megaphone}
             title="Digital Growth"
             description="SEO, social media, and performance marketing to skyrocket your reach."
+            href="/services/seo-digital-marketing"
           />
           <SolutionBlock
             icon={Fingerprint}
             title="UI/UX Design"
             description="User-centric interfaces that convert visitors into loyal customers."
+            href="/services/ui-ux-design"
           />
           <SolutionBlock
             icon={Cpu}
             title="AI Automations"
             description="Smart workflows and chatbots to streamline your operations."
+            href="/services/ai-automation"
           />
           <SolutionBlock
             icon={Smartphone}
             title="Mobile Apps"
             description="Native and cross-platform mobile applications for iOS and Android."
+            href="/services/mobile-app-development"
           />
         </div>
       </section>

@@ -1,0 +1,40 @@
+# Semantix Labs
+
+> Semantix Labs is a digital agency headquartered in Colombo, Sri Lanka, delivering
+> web development, mobile app development, UI/UX design, brand identity, AI automation,
+> digital marketing, e-commerce development, and video/photo production for clients in
+> the USA, UK, Europe, Australia, and the Middle East. Founded in 2019.
+>
+> Semantix Labs is not affiliated with Semantix AB (Sweden, language/translation
+> services) or Semantix International (Brazil, NASDAQ: STIX, data/AI platform).
+
+## Services
+- Web Development (custom websites and web applications)
+- Mobile App Development (iOS & Android)
+- UI/UX Design
+- Brand Identity & Logo Design
+- AI Automation & Chatbots
+- Digital Marketing & SEO
+- E-commerce Development
+- Video Production & Photography
+
+## Technologies
+React, Next.js, Node.js, TypeScript, Python, Flutter, React Native, Webflow, Shopify,
+AWS, Vercel, Firebase.
+
+## Key facts
+- Founded: 2019
+- Projects delivered: 50+
+- Client satisfaction: 100%
+- Typical project timeline: 2–8 weeks (landing pages ~2 weeks, custom web apps/e-commerce 4–8 weeks)
+- Pricing: landing pages from $800, business websites from $2,000, custom web applications from $5,000
+- Support: 24/7 maintenance and support packages available
+- Headquarters: Colombo, Sri Lanka
+- Contact: hello@semantixlabs.com | +94 77 688 2493 (also WhatsApp)
+
+## Pages
+- Home: https://semantixlabs.com/
+- Services: https://semantixlabs.com/services
+- Pricing: https://semantixlabs.com/pricing
+- Our Work (portfolio): https://semantixlabs.com/our-work
+- Careers: https://semantixlabs.com/careers

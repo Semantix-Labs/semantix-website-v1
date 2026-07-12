@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { X, Menu, Briefcase, Globe, Heart, Zap, ArrowRight, ArrowUpRight, Loader2 } from 'lucide-react';
+import { Briefcase, Globe, Heart, Zap, ArrowRight, ArrowUpRight, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import SemanixLogo from '@/components/SemanixLogo';
+import SiteHeader from '@/components/SiteHeader';
 import Footer from '@/components/Footer';
 import { SEO } from '@/components/SEO';
 import { toast } from 'sonner';
@@ -169,24 +169,15 @@ const JOB_OPENINGS = [
 const FILTERS = ['All', 'Creative', 'Marketing', 'Development'];
 
 const Careers = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
-  
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CAREERS_TEMPLATE_ID || import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/semantixlabs/30min' });
-    } else {
-      window.open('https://calendly.com/semantixlabs/30min', '_blank');
-    }
-  };
 
   const handleApplyClick = (job: any) => {
     setSelectedJob(job);
@@ -289,51 +280,7 @@ const Careers = () => {
         })}
       </script>
       
-      {/* Navigation */}
-      <nav className="fixed top-4 md:top-6 left-4 right-4 md:left-0 md:right-0 z-50 flex justify-center transition-all duration-300">
-        <div className="w-full max-w-[1200px] bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl shadow-purple-500/5 flex items-center justify-between">
-          <a href="/" className="z-50 shrink-0">
-            <SemanixLogo className="h-12 md:h-14 w-auto transition-transform hover:scale-105" theme="light" />
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
-            <a href="/" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Home</a>
-            <a href="/our-work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Our Work</a>
-            <a href="/careers" className="text-sm font-medium text-white transition-colors">Careers</a>
-            <a href="/#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Contact</a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden md:block">
-              <Button size="sm" className="bg-white text-black hover:bg-gray-200 rounded-full px-6 font-medium" onClick={openCalendly}>
-                Start Project
-              </Button>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden z-50 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-8 animate-in fade-in zoom-in-95 p-6 duration-300">
-            <a href="/" className="text-3xl font-medium text-white">Home</a>
-            <a href="/our-work" className="text-3xl font-medium text-white">Our Work</a>
-            <a href="/careers" className="text-3xl font-medium text-white">Careers</a>
-            <a href="/#contact" className="text-3xl font-medium text-white">Contact</a>
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-6 text-lg" onClick={openCalendly}>
-              Start Project
-            </Button>
-          </div>
-        )}
-      </nav>
+      <SiteHeader activePath="/careers" />
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto overflow-hidden">

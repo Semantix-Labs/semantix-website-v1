@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                                 <Instagram className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
                             </a>
                             <a
-                                href="https://wa.me/94728133311"
+                                href="https://wa.me/94776882493"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 group"
@@ -81,7 +81,8 @@ const Footer: React.FC = () => {
                         <h4 className="font-semibold text-lg mb-6">Company</h4>
                         <ul className="space-y-4">
                             <li><a href="/#about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="/#services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                            <li><a href="/services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                            <li><a href="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                             <li><a href="/our-work" className="text-gray-400 hover:text-white transition-colors">Our Work</a></li>
                             <li><a href="/careers" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
                             <li><a href="/#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
@@ -113,6 +114,13 @@ const Footer: React.FC = () => {
                         <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
                     </button>
                 </div>
+
+                <p className="pt-6 text-xs text-gray-600 max-w-3xl leading-relaxed">
+                    Semantix Labs is a digital agency headquartered in Colombo, Sri Lanka, providing web development,
+                    mobile app development, and AI automation services to clients in the USA, UK, Europe, Australia,
+                    and the Middle East. Semantix Labs is not affiliated with Semantix AB (Sweden, language services)
+                    or Semantix International (Brazil, NASDAQ: STIX, data/AI platform).
+                </p>
             </div>
         </footer>
     );
